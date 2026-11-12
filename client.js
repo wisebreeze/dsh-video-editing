@@ -432,10 +432,16 @@ window.__ModuleLoader__.load({
     }
 
     return {
-      inject: ['slots', 'locale'],
+      inject: ['slots', 'locale', 'styles'],
       apply(ctx) {
         ctx.effect(() => bindLocale(ctx), 'video-editing: locale')
-        ctx.effect(() => styles.insert(CSS), 'video-editing: styles')
+
+        // Styles are optional: a deployment without the styles service still
+        // gets a working page, just with the host's default tokens.
+        const styles = ctx.get('styles')
+        if (styles !== undefined && typeof styles.insert === 'function') {
+          ctx.effect(() => styles.insert(CSS), 'video-editing: styles')
+        }
 
         const Page = makePage()
         const locale = ctx.get('locale')
