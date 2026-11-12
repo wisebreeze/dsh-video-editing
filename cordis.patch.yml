@@ -1,0 +1,11 @@
+# Bundle patch for dsh-video-editing.
+#
+# The Host half provides `ctx.videoEditing`: FFmpeg detection, the version
+# probe, the guided install download (with byte progress) and the static
+# runtime files the page uses to notice the install from any transport.
+# The Client half registers one tab type in UI slots and bridges it to both
+# the official right Sidebar (`ctx.sidebarRightTabs`) and dsh-better-sidebar
+# (`ctx.betterSidebar`), whichever is present.
+- insert:
+    - id: video-editing
+      name: 'dsh-video-editing'

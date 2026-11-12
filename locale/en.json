@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Video editing",
+    "description": "Adds a video editing page to the right sidebar that detects FFmpeg, installs it with a live download progress bar, and shows the installed version."
+  }
+}
